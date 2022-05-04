@@ -71,11 +71,3 @@ func (h *Heap) BuildMinHeap(arr []int) {
 		h.MinHeapify(i)
 	}
 }
-
-func (h *Heap) HeapDelete(i int) {
-	if i < h.size {
-		if h.data[i] < h.data[h.size-1] {
-
-		}
-	}
-}

@@ -50,6 +50,14 @@ func (h *Heap) MaxHeapInsert(key int) {
 	h.HeapIncreaseKey(h.size-1, key)
 }
 
+func (h *Heap) MaxHeapDelete(i int) {
+	if i < h.size {
+		h.data[i], h.data[h.size] = h.data[h.size], h.data[i]
+		h.data = h.data[:h.length-1]
+		h.MaxHeapify(i)
+	}
+}
+
 // This one works for min heap.
 
 func (h Heap) HeapMin() int {
@@ -86,4 +94,12 @@ func (h *Heap) MinHeapInsert(key int) {
 	h.data[h.size] = constants.MaxInt
 	h.size++
 	h.HeapIncreaseKey(h.size-1, key)
+}
+
+func (h *Heap) MinHeapDelete(i int) {
+	if i < h.size {
+		h.data[i], h.data[h.size] = h.data[h.size], h.data[i]
+		h.data = h.data[:h.length-1]
+		h.MinHeapify(i)
+	}
 }

@@ -14,21 +14,27 @@ func New() *Stack {
 	return s
 }
 
-func (s Stack) IsEmpty() bool {
+func (s *Stack) IsEmpty() bool {
 	return s.Top == 0
 }
 
-func (s Stack) Push(el int) {
+func (s *Stack) Push(el int) error {
+	if s == nil {
+		return errors.New("initialise stack first")
+	}
 	s.Top += 1
 	s.Data = append(s.Data, el)
+	return nil
 }
 
-func (s Stack) Pop() (int, error) {
+func (s *Stack) Pop() (int, error) {
 	var el int
-	if s.IsEmpty() {
-		return -1, errors.New("Stack is empty can't pop")
+	if s == nil {
+		return -1, errors.New("initialise stack first")
+	} else if s.IsEmpty() {
+		return -1, errors.New("stack is empty can't pop")
 	}
-	el = s.Data[s.Top]
+	el = s.Data[s.Top-1]
 	s.Top -= 1
 	s.Data = s.Data[:s.Top]
 	return el, nil

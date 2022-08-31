@@ -161,20 +161,13 @@ func TestLMaxSubArray(t *testing.T) {
 			args: args{
 				arr: []int{1, -2, 4, -1, 3, -6, 7, 9, 0, -1},
 			},
-			want: resultTuple{start: 2, end: 7, sum: 16},
-		},
-		{
-			name: "Sample 3",
-			args: args{
-				arr: []int{1, -2},
-			},
-			want: resultTuple{start: 0, end: 1, sum: -1},
+			want: resultTuple{start: 6, end: 7, sum: 16},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := LMaxSubArray(tt.args.arr); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("LMaxSubArray() = %v, want %v", got, tt.want)
+				t.Errorf("LMaxSubArray() = got:%v, want:%v", got, tt.want)
 			}
 		})
 	}

@@ -1,6 +1,6 @@
 package linear
 
-// This algorithm is desinged for arrays that contains digits in a pre determined range
+// CountingSort algorithm is desinged for arrays that contains digits in a pre determined range
 func CountingSort(arr []int, k int) []int {
 	sortedArr := make([]int, len(arr))
 	tempArr := make([]int, k)

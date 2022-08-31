@@ -9,13 +9,13 @@ type Stack struct {
 
 func New() *Stack {
 	s := new(Stack)
-	s.Top = 0
+	s.Top = -1
 	s.Data = make([]int, 0)
 	return s
 }
 
 func (s *Stack) IsEmpty() bool {
-	return s.Top == 0
+	return s.Top == -1
 }
 
 func (s *Stack) Push(el int) error {
@@ -34,7 +34,7 @@ func (s *Stack) Pop() (int, error) {
 	} else if s.IsEmpty() {
 		return -1, errors.New("stack is empty can't pop")
 	}
-	el = s.Data[s.Top-1]
+	el = s.Data[s.Top]
 	s.Top -= 1
 	s.Data = s.Data[:s.Top]
 	return el, nil
